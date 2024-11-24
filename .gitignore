@@ -1,0 +1,102 @@
+# Build results
+bin/
+obj/
+out/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Microsoft Visual Studio specific files
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+*.csproj.user
+*.vbproj.user
+
+# Rider specific files
+.idea/
+
+# Local History for JetBrains IDEs
+.localhistory/
+
+# Logs
+*.log
+logs/
+
+# Database files
+*.mdf
+*.ldf
+*.ndf
+
+# Entity Framework
+Migrations/
+
+# Publish output
+publish/
+wwwroot/
+
+# Test results
+TestResults/
+*.trx
+*.coverage
+
+# Dotnet specific files
+*.rsuser
+*.dotCover
+*.nvuser
+*.swp
+*.swpx
+*.tempproj
+.project/
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+
+# Configuration files
+appsettings.json
+appsettings.*.json
+secrets.json
+
+# Lock files
+project.lock.json
+project.fragment.lock.json
+global.json.lock
+
+# Generated files
+*.designer.cs
+*.g.cs
+*.generated.cs
+*.i.cs
+*.assemblyattributes.cs
+
+# Tools and IDE files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# OS generated files/macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux generated files
+*~
+# Swap files
+*.swp
+
+# JetBrains Rider
+.idea/
+.idea_modules/
+
