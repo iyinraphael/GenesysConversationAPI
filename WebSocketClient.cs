@@ -36,17 +36,28 @@ namespace GenesysSdkPoc
 
                     // recieve health check
                     var buffer = new byte[1024];
-                    var result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                    while (ws.State == WebSocketState.Open) 
+                    {
+                        try 
+                        {
+                            var result = await ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
 
-                    if (result.MessageType == WebSocketMessageType.Text)
-                      {
-                         string receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                         Console.WriteLine($"Received message: {receivedMessage}");
-                      }
-                     else if (result.MessageType == WebSocketMessageType.Close)
-                     {
-                         Console.WriteLine("WebSocket connection closed by server.");
-                     }
+                            if (result.MessageType == WebSocketMessageType.Text)
+                            {
+                                string receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                                Console.WriteLine($"Received message: {receivedMessage}");
+                            }
+                            else if (result.MessageType == WebSocketMessageType.Close)
+                            {
+                            Console.WriteLine("WebSocket connection closed by server.");
+                            }
+                        }
+                        catch (Exception e) 
+                        {
+                            Console.WriteLine($"Error: {e.Message}");
+                        }
+
+                    }
                 }); 
                 
                 await receiveTask;
