@@ -19,19 +19,23 @@ internal class Program
         PureCloudRegionHosts region = PureCloudRegionHosts.us_east_1;
         Configuration.Default.ApiClient.setBasePath(region);
 
-        // Using Analytics API to to get aggregate conversation details
+        /** MARK 1: Querying Conversation API to get metric details [Nconneted, Ntransffered, Tabandon] on interation  filtering to mediatype and user id **/
+
         var analyticsApi = new AnalyticsApi();
         var conversationAnalyticsAggregate = new AnalyticsConversationsAggregates(analyticsApi);
         conversationAnalyticsAggregate.PostAnalyticsConversationsAggregates();
 
-        // Create Notfication channel
+        /** MARK 2: Streaming ongoing interactions on a Queue via WebsocketI  **/   
+        
+        // Create a notification channel to subscribe to conversation notifications
         var notificationsApi = new NotificationsApi();
         var notificationChannel = new NotficationChannel(notificationsApi);
         var channelUri = notificationChannel.CreateNotficationChannel();
+        Console.WriteLine("Channel URI: " + channelUri);
 
-        // Subscribe ot converstiona notication for the queue
+        // Subscribe to a converstion notication for the queue
         var queueId = "";
-        var channelId = "";
+        var channelId = channelUri.Split("/").Last();
         var channelTopic = new ChannelTopic 
         {
             Id = $"v2.routing.queues.{queueId}.conversations"
@@ -49,7 +53,7 @@ internal class Program
 
     
         // connect the web socket for live data streaming
-        var websocketClient = new WebSocketClient("");
+        var websocketClient = new WebSocketClient(channelUri);
         await websocketClient.ConnectToWebsocket();
 
         var queueObservationQuery = new AnalyticsQueryObservation(analyticsApi, queueId);

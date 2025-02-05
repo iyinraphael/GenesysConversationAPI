@@ -38,7 +38,7 @@ namespace GenesysSdkPoc
         // Define the ConversationAggregationQuery
         var query = new ConversationAggregationQuery
         {
-            Interval = "2024-11-18T13:00:00.000Z/2024-11-23T13:00:00.000Z", // ISO-8601 format
+            Interval = "2024-11-18T13:00:00.000Z/2025-01-25T13:00:00.000Z", // ISO-8601 format
             Granularity = "PT12H", // 12-hour granularity
             GroupBy = new List<ConversationAggregationQuery.GroupByEnum>
             {
@@ -51,7 +51,7 @@ namespace GenesysSdkPoc
                 ConversationAggregationQuery.MetricsEnum.Ntransferred,
                 ConversationAggregationQuery.MetricsEnum.Tabandon
             },
-            Filter = filter // Filter added here
+            Filter = filter 
         };
             
             return query;
