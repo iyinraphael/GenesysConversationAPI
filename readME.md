@@ -1,5 +1,5 @@
 ---
-title: Genesys Cloud .NET SDK - Query Conversation Data and Stream Ongoing Interactions on a Queue via Websocket
+title: Genesys Cloud .NET SDK Analytics API- Stream Conversation and Queue data via Websocket
 author: iyin.raphael
 indextype: blueprint
 icon: blueprint
@@ -9,7 +9,19 @@ summary: |
   This Genesys Cloud Developer Blueprint demonstrates how to use the Genesys Cloud .NET SDK to query conversation data and stream live interactions from a queue in real-time via WebSocket.
 ---
 
-This Genesys Cloud Developer Blueprint explains how to set up, use, and customize the Genesys Cloud .NET SDK to query conversation data and stream real-time interactions on a queue using WebSocket.
+This project leverages the Genesys Platform API .NET Client SDK, a key component of Genesys Developer Tools, to demonstrate how to integrate OAuth Client Credential authentication for secure access.
+
+In the first part, we utilize the Analytics API library to query voice conversation metrics, extracting insights such as:
+
+- Number of connected interactions
+- Number of transferred interactions
+- Number of abandoned interactions
+
+In the second part, we implement the Notifications API library to establish a WebSocket-based notification channel. This setup enables real-time queue observation query, allowing continuous monitoring of key interaction metrics such as:
+
+- Observed number of interactions waiting in a queue.
+- Observed number of users with a particular routing status.
+- Observed number of current users interacting on a queue.
 
 ![Streaming Overview](images/flowchart.png)
 
@@ -19,7 +31,7 @@ This Genesys Cloud Developer Blueprint explains how to set up, use, and customiz
 - **Genesys Cloud .NET SDK**: A powerful tool to interact with Genesys Cloud APIs using .NET.
 - **WebSocket Technology**: Provides real-time updates for ongoing queue interactions.
 - **Queue Notifications**: The subscription mechanism for receiving updates on specific queue events.
-
+Enterprise organization with .NET applications. Shows the ease of using the Genesys .NET SDK for Notification API and Analytics API
 ## Prerequisites
 
 ### Specialized Knowledge
